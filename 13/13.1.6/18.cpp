@@ -6,6 +6,12 @@ class Employee{
         }
         Employee(const string& name):empName(name),id(++sz){
         }
+        Employee(const Employee& emp):empName(emp.empName),id(++sz){}
+        Employee& operator=(const Employee& emp){
+            empName = emp.empName;
+            id = ++sz;
+            return *this;
+        }
         void print(){
             cout << "id: " << id <<" name: " << empName << endl;
         }
