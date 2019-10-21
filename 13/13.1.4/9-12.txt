@@ -10,6 +10,7 @@ V.临时对象，当创建它的完整表达式结束时被销毁。
 10.当一个StrBlob对象销毁时会发生什么？一个StrBlobPtr对象销毁时呢？
 调用shared_ptr析构函数。
 调用weak_ptr析构函数。
+11.参见13/13.1.1
 12.在下面的代码片段中会发生几次析构函数调用？
 bool fcn(const Sales_data *trans,Sales_data accum)
 {
