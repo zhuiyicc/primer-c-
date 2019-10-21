@@ -1,0 +1,22 @@
+1.拷贝构造函数是什么？什么时候使用它？
+构造函数用来告知创建一个对象时，应该做什么，拷贝即是对对象中的数据成员进行拷贝初始化，但拷贝初始化有时会使用移动构造函数来完成，这种情况发生在源对象是
+一个右值引用。使用直接初始化时，实际上是要求编译器使用函数匹配来选择与提供的参数最匹配的构造函数。
+拷贝初始化发生在4种情况下:
+I.用=定义变量时。
+II.将一个对象作为实参传递给一个非引用类型的形参。
+III.函数返回类型为非引用时返回的一个对象。
+IV.用花括号初始化数组或一个聚合类的成员。
+2.解释为什么下面的声明时非法的:Sales_data::Sales_data(Sales_data rhs);
+拷贝构造函数的参数必须是引用类型的(上述II)
+3.当我们拷贝一个StrBlob时，会发生什么？拷贝一个StrBlobPtr呢？
+调用shared_ptr的拷贝构造函数。
+调用用weak_ptr的拷贝构造函数。
+4.假定Point是一个类类型，它有一个public的拷贝函数，指出下面程序片段中哪些地方使用了拷贝构造函数:
+Point global;
+Point foo_bar(Point arg)//II
+{
+  Point local = arg,*heap = new Point(global);//I
+  *heap = local;//I
+  Point pa[4] = {local,*heap};//IV
+  return *heap;//III
+}
