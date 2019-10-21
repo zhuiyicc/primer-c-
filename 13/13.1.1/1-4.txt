@@ -9,14 +9,14 @@ IV.用花括号初始化数组或一个聚合类的成员。
 2.解释为什么下面的声明时非法的:Sales_data::Sales_data(Sales_data rhs);
 拷贝构造函数的参数必须是引用类型的(上述II)
 3.当我们拷贝一个StrBlob时，会发生什么？拷贝一个StrBlobPtr呢？
-调用shared_ptr的拷贝构造函数。
-调用用weak_ptr的拷贝构造函数。
+使用=赋值拷贝时实际上先调用编译器合成的拷贝赋值运算符然后调用类内其他对象的拷贝赋值运算符。
+使用=,()定义时实际上先调用编译器合成的拷贝构造函数然后调用类内其他对象的拷贝构造函数。
 4.假定Point是一个类类型，它有一个public的拷贝函数，指出下面程序片段中哪些地方使用了拷贝构造函数:
 Point global;
 Point foo_bar(Point arg)//II
 {
   Point local = arg,*heap = new Point(global);//I
-  *heap = local;//I
+  *heap = local;//赋值拷贝
   Point pa[4] = {local,*heap};//IV
   return *heap;//III
 }
