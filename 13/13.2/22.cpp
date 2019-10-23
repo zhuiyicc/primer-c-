@@ -11,8 +11,13 @@ class HasPtr{
         }
         HasPtr& operator=(const HasPtr& a){
             x = a.x;
+            if(strp != nullptr)
+                delete strp;
             strp = new string(*a.strp);
             return *this;
+        }
+        ~HasPtr(){
+            delete strp;
         }
         friend ostream& operator<<(ostream& out,const HasPtr& a){
             return out << hex << a.strp <<" "<< *a.strp << endl;
