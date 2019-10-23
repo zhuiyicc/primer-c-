@@ -11,9 +11,9 @@ class HasPtr{
         }
         HasPtr& operator=(const HasPtr& a){
             x = a.x;
-            if(strp != nullptr)
-                delete strp;
-            strp = new string(*a.strp);
+            auto newp = new string(*a.strp);
+            delete strp;
+            strp = newp;
             return *this;
         }
         ~HasPtr(){
