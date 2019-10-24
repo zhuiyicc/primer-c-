@@ -1,0 +1,5 @@
+16.拷贝构造函数，拷贝赋值运算符均为delete function
+17.(a)应该传递一个指针 (b)(c)(d)应该注意pi不能被直接delete，因为可能出现delete两次的情况
+(e)可以 unique_ptr没有get()
+18.shared_ptr有引用计数，如果有release则引用计数减1，但返回了一个内置指针，内置指针可能被delete，而其他指向该内存的shared_ptr在调用析构函数时会
+出错。
